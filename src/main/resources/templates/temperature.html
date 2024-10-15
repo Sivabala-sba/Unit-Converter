@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Unit Converter</title>
+</head>
+<body>
+<header>
+    <h1>Unit Converter</h1>
+    <nav>
+        <a href="length">Length</a>
+        <a href="weight">Weight</a>
+        <a href="temperature">Temperature</a>
+    </nav>
+</header>
+<main>
+    <h2>Temperature Converter</h2>
+    <form action="/convertTemperature" method="POST">
+        <label for="value">Enter Value:</label>
+        <input type="number" id="value" name="value" required>
+
+        <label for="fromUnit">Convert From:</label>
+        <select id="fromUnit" name="fromUnit">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+            <option value="K">Kelvin</option>
+        </select>
+
+        <label for="toUnit">Convert To:</label>
+        <select id="toUnit" name="toUnit">
+            <option value="C">Celsius</option>
+            <option value="F">Fahrenheit</option>
+            <option value="K">Kelvin</option>
+        </select>
+
+        <button type="submit">Convert</button>
+    </form>
+    <div>
+        <!-- Display the conversion result -->
+        <h2>Converted Value:</h2>
+        <p>
+            <span th:if="${convertedValue != null}">
+                <strong th:text="${value} + ' ' + ${fromUnit} + ' = ' + ${convertedValue} + ' ' + ${toUnit}"></strong>
+            </span>
+            <span th:if="${convertedValue == null}">Please enter a value and select units to convert.</span>
+        </p>
+    </div>
+</main>
+</body>
+</html>
